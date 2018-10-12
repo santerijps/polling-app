@@ -1,6 +1,9 @@
 {
   "name": "server",
   "version": "0.0.0",
+  "engines": {
+    "node": "8.11.2"
+  },
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -14,7 +17,7 @@
     "http-errors": "~1.6.2",
     "jquery": "^3.3.1",
     "js-cookie": "^2.2.0",
-    "mongodb": "^3.1.6",
+    "mongodb": "^3.1.8",
     "mongoose": "^5.3.1",
     "morgan": "~1.9.0",
     "popper.js": "^1.14.4",
