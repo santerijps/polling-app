@@ -5,8 +5,11 @@ const selectOption = (e, selectedOption) => {
   e.classList.add('active')
 }
 
+var answerSubmitted = false
 const submitAnswer = () => {
   if(optionIndex === null) return
+  if(answerSubmitted) return
+  answerSubmitted = true
   fetch('/api/polls', {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },

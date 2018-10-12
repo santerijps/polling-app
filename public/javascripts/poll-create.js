@@ -25,7 +25,10 @@ const addOption = () => {
   optionsElement.appendChild(container)
 }
 
+var pollPublished = false
 const publishPoll = () => {
+  if(pollPublished) return
+  pollPublished = true
   let question = document.getElementById('q').value
   let description = document.getElementById('d').value
   let optionsElement = document.getElementById('options')
