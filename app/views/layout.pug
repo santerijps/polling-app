@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title= title
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="Content-Type", content="text/html;charset=UTF-8")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+    script(defer src='/javascripts/jquery.min.js')
+    script(defer src='/javascripts/popper.min.js')
+    script(defer src='/javascripts/bootstrap.min.js')
+  body
+    block content
+    footer.page-footer.font-small.blue
+      div.footer-copyright.text-center.py-3 
+        a(href='/') Home
+        span  | 
+        a(href='https://github.com/sunjohanday/polling-app' target='_blank') Github

@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  include title.pug
+  div.container.text-center(style='margin-bottom: 5%;')
+    h3 
+      i Get started
+    a(href='/create')
+      b CREATE
+  include polls.pug

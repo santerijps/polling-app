@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  include title.pug
+  div.container.text-center(style='margin-bottom: 5%;')
+    div(style='margin-bottom: 5%; width: 60%; margin-left: 20%;')
+      div.form-group.text-left
+        label 
+          b Question
+        input(type='text' class='form-control' placeholder='Is the sky blue?' id='q')
+      div.form-group.text-left
+        label
+          b Description 
+        input(type='text' class='form-control' placeholder='Now that the ashes have settled...' id='d')
+      div#options
+    a(href='javascript:;' onclick='addOption()')
+      b ADD OPTION
+    span &nbsp;|&nbsp;
+    a(href='javascript:;' onclick='publishPoll()')
+      b PUBLISH
+  script(src='/javascripts/poll-create.js')

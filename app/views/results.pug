@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  include title.pug
+  div.container.text-center#chart
+  script.
+    var data = `#{options}`.replace(/&quot;/g, '"');
+    data = JSON.parse(data);
+    data.map(d => {
+      d.value = d.count;
+    });
+  script(src='/javascripts/js.cookie.js')
+  script(src='/javascripts/d3.min.js')
+  script(src='/javascripts/d3pie.min.js')
+  script(defer src='/javascripts/poll-results.js')

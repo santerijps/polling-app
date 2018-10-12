@@ -1,0 +1,38 @@
+@font-face {
+  font-family: Thin;
+  src: url('../fonts/Roboto-Thin.ttf');
+}
+
+@font-face {
+  font-family: Light;
+  src: url('../fonts/Roboto-Light.ttf');
+}
+
+body {
+  background-color: #f2f2f2 !important;
+  color: #958f8f !important;
+  height: 100%;
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+@media screen and (min-width: 800px) {
+  .poll-table {
+    width: 70% !important;
+    margin-left: 20%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .poll-table {
+    width: 90% !important;
+    margin-left: 5%;
+  }
+}
