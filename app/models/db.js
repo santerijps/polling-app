@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const mongoUrl = 'mongodb://127.0.0.1/polling-app'
+const mongoUrl = process.env.MONGO_URL || 'mongodb://127.0.0.1/polling-app'
 
 mongoose.connect(mongoUrl, {
   useNewUrlParser: true,
