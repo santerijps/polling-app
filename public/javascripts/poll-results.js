@@ -1,6 +1,20 @@
 let chart = document.getElementById('chart')
+
+// on smaller screens, make the chart radius 250px,
+// also make font size smaller
 let radius = Math.max(chart.offsetWidth / 2.5, 250)
 let fontSize = radius === 250 ? 15 : '2em'
+
+let colors = ['#4d3030', '#cead8b', '#cc965f', '#fdb200', '#c9a07d']
+data = data.map((d, i) => {
+	if(i < colors.length) {
+		d.color = colors[ı]
+	} else {
+		d.color = colors[Math.random() * colors.length]
+	}
+	return d
+})
+
 var pie = new d3pie("chart", {
 	"size": {
 		"canvasHeight": radius,
