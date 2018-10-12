@@ -5,10 +5,10 @@ let chart = document.getElementById('chart')
 let radius = Math.max(chart.offsetWidth / 2.5, 250)
 let fontSize = radius === 250 ? 15 : '2em'
 
-let colors = ['#4d3030', '#cead8b', '#cc965f', '#fdb200', '#c9a07d']
+let colors = ['#cead8b', '#cc965f', '#fdb200', '#c9a07d', '#d0b1ad']
 data = data.map((d, i) => {
 	if(i < colors.length) {
-		d.color = colors[ı]
+		d.color = colors[i]
 	} else {
 		d.color = colors[Math.random() * colors.length]
 	}
