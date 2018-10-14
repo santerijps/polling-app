@@ -65,7 +65,7 @@ module.exports = {
       question: question,
       description: description,
       selectLimit: selectLimit,
-      expires: hoursInTheFuture(24),
+      //expires: hoursInTheFuture(24),
       number: generatePollNumber(),
       answerCount: 0,
       options: initializeOptions(options)

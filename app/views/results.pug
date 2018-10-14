@@ -4,6 +4,7 @@ block content
   include title.pug
   div.container.text-center#chart
   script.
+    var answerCount = `#{answerCount}`
     var data = `#{options}`.replace(/&quot;/g, '"');
     data = JSON.parse(data);
     data.map(d => {

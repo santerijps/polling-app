@@ -67,4 +67,36 @@ var pie = new d3pie("chart", {
 			"percentage": 100
 		}
 	}
-});
+})
+
+const pollNumber = window.location.pathname.split('/')[2]
+const requestUrl = `/api/polls/${pollNumber}`
+
+// fetches result data
+function fetchResults() {
+	fetch(requestUrl)
+		.then(r => r.json())
+		.then(results => {
+			if(results !== null) {
+				if(results.answerCount > answerCount) {
+					answerCount = results.answerCount
+					let options = results.options.map(o => {
+						o.value = o.count
+						return o
+					})
+					pie.updateProp('data.content', options)
+				}
+			}
+		})
+		.catch(e => console.log(e))
+}
+
+// keeps fetching new results
+function resultUpdater() {
+	setTimeout(() => {
+		fetchResults()
+		resultUpdater()
+	}, 10000);
+}
+
+resultUpdater()
