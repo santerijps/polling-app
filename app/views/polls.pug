@@ -4,11 +4,11 @@ div.container
       tr
         th Popular polls right now
     tbody
-      each q in polls.length ? polls : [{number: '/', question: 'There are no polls...'}]
+      each q in polls.length ? polls.map(p => {p.number = `/poll/${p.number}`;return p;}) : [{number: '/', question: 'There are no polls...'}]
         tr
           td(style='width: 80%;')
             div(style='display: inline-block; width: 80%; overflow: auto;')
-              a(href='/poll/'+q.number)
+              a(href=q.number)
                 b= q.question
             div(style='display: inline-block; width: 20%; text-align: right;'
               title=q.answerCount+' people have answered to this poll')

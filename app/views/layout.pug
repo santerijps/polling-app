@@ -12,8 +12,4 @@ html
     script(defer src='/javascripts/bootstrap.min.js')
   body
     block content
-    footer.page-footer.font-small.blue
-      div.footer-copyright.text-center.py-3 
-        a(href='/') Home
-        span  | 
-        a(href='https://github.com/sunjohanday/polling-app' target='_blank') Github
+    include footer.pug

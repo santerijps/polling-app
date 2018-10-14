@@ -14,8 +14,20 @@ router.get('/', function(req, res, next) {
   })
 })
 
+// redirects to results page is poll already answered
+const skipToPollResultsIfNeeded = (req, res) => {
+  let ap = req.cookies['ap']
+  if(ap !== undefined) {
+    ap = JSON.parse(ap)
+    if(ap.indexOf(req.params.pollNumber) !== -1) {
+      res.redirect(`/poll/${req.params.pollNumber}/results`)
+    } 
+  }
+}
+
 // GET specified poll
 router.get('/poll/:pollNumber', (req, res, next) => {
+  skipToPollResultsIfNeeded(req, res)
   pollController.getByPollNumber(req.params.pollNumber, (e, r) => {
     if(e) throw e
     r ? res.render('poll', {
@@ -39,7 +51,7 @@ router.get('/poll/:pollNumber/results', (req, res, next) => {
     if(e) throw e
     r ? res.render('results', {
       title: `Results for "${r.question}"`,
-      description: `This poll has ${r.answerCount} answers`,
+      description: `Totaling at ${r.answerCount} answers`,
       answerCount: r.answerCount,
       options: JSON.stringify(r.options),
       titleMarginBottom: '2%'

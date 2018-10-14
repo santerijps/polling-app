@@ -30,6 +30,7 @@ const PollSchema = new mongoose.Schema({
   }, // 1 (single) / 1+ (multi)
   expires: {
     type: Date,
+    expires: '1d',
     required: true
   }, // 21-12-2018T21:00:00
   number: {

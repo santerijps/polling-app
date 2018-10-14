@@ -5,6 +5,7 @@ let chart = document.getElementById('chart')
 let radius = Math.max(chart.offsetWidth / 2.5, 250)
 let fontSize = radius === 250 ? 15 : '2em'
 
+// set colors for each option
 let colors = ['#cead8b', '#cc965f', '#fdb200', '#c9a07d', '#d0b1ad']
 data = data.map((d, i) => {
 	if(i < colors.length) {
@@ -15,6 +16,7 @@ data = data.map((d, i) => {
 	return d
 })
 
+// build the pie chart
 var pie = new d3pie("chart", {
 	"size": {
 		"canvasHeight": radius,
