@@ -69,6 +69,7 @@ var pie = new d3pie("chart", {
 	}
 })
 
+var description  = document.getElementById('description')
 const pollNumber = window.location.pathname.split('/')[2]
 const requestUrl = `/api/polls/${pollNumber}`
 
@@ -85,6 +86,7 @@ function fetchResults() {
 						return o
 					})
 					pie.updateProp('data.content', options)
+					description.innerText = `Totaling at ${answerCount} answers`
 				}
 			}
 		})
