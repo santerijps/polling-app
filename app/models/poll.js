@@ -14,7 +14,8 @@ const OptionSchema = new mongoose.Schema({
 const PollSchema = new mongoose.Schema({
   created: {
     type: Date,
-    required: true
+    required: true,
+    expires: '1d'
   }, // 21-12-2018T21:00:00
   question: {
     type: String,
@@ -28,11 +29,6 @@ const PollSchema = new mongoose.Schema({
     type: Number,
     required: true
   }, // 1 (single) / 1+ (multi)
-  expires: {
-    type: Date,
-    expires: '1d',
-    required: true
-  }, // 21-12-2018T21:00:00
   number: {
     type: String,
     required: true

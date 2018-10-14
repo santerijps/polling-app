@@ -37,7 +37,7 @@ module.exports = {
 
   // No parameters
   getAll: callback => {
-    Poll.find({expires: {'$gt': new Date()}})
+    Poll.find()
       .sort({answerCount: -1})
       .exec((e,r) => callback && callback(e, r))
   },

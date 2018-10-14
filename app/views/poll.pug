@@ -2,10 +2,10 @@ extends layout
 
 block content
   include title.pug
-  div.container.text-center(style='margin-bottom: 5%;')
+  div.container.text-center.main-margin-bottom
     div.list-group(style='margin-bottom: 5%;')
       each o, i in options
-        h2.text-left(style='width: 60%; margin-left: 20%;')
+        h2.text-left.main-width
           a.list-group-item.list-group-item-action(href='javascript:;' onclick=`selectOption(this, ${i})`)= o.label
     a(href='javascript:;' onclick='submitAnswer()')
       b SUBMIT

@@ -24,15 +24,21 @@ body {
 }
 
 @media screen and (min-width: 800px) {
-  .poll-table {
+  .main-width {
     width: 70% !important;
-    margin-left: 20%;
+    margin-left: 15%;
+  }
+  .main-margin-bottom {
+    margin-bottom: 5%;
   }
 }
 
 @media screen and (max-width: 400px) {
-  .poll-table {
+  .main-width {
     width: 90% !important;
     margin-left: 5%;
+  }
+  .main-margin-bottom {
+    margin-bottom: 15%;
   }
 }

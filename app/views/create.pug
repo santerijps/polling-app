@@ -2,8 +2,8 @@ extends layout
 
 block content
   include title.pug
-  div.container.text-center(style='margin-bottom: 5%;')
-    div(style='margin-bottom: 5%; width: 60%; margin-left: 20%;')
+  div.container.text-center.main-margin-bottom
+    div.main-width(style='margin-bottom: 5%;')
       div.form-group.text-left
         label 
           b Question
@@ -14,8 +14,8 @@ block content
         input(type='text' class='form-control' placeholder='Now that the ashes have settled...' id='d')
       div#options
     a(href='javascript:;' onclick='addOption()')
-      b ADD OPTION
+      b ADD OPTION&nbsp;
     span &nbsp;|&nbsp;
     a(href='javascript:;' onclick='publishPoll()')
-      b PUBLISH
+      b &nbsp;PUBLISH
   script(src='/javascripts/poll-create.js')
