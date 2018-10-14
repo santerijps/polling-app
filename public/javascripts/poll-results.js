@@ -6,15 +6,18 @@ let radius = Math.max(chart.offsetWidth / 2.5, 250)
 let fontSize = radius === 250 ? 15 : '2em'
 
 // set colors for each option
-let colors = ['#cead8b', '#cc965f', '#fdb200', '#c9a07d', '#d0b1ad']
-data = data.map((d, i) => {
-	if(i < colors.length) {
-		d.color = colors[i]
-	} else {
-		d.color = colors[Math.random() * colors.length]
-	}
-	return d
-})
+const colors = ['#cead8b', '#cc965f', '#fdb200', '#c9a07d', '#d0b1ad']
+function setColors(options) {
+	return options.map((d, i) => {
+		if(i < colors.length) {
+			d.color = colors[i]
+		} else {
+			d.color = colors[Math.random() * colors.length]
+		}
+		return d
+	})
+}
+data = setColors(data)
 
 // build the pie chart
 var pie = new d3pie("chart", {
@@ -85,6 +88,7 @@ function fetchResults() {
 						o.value = o.count
 						return o
 					})
+					options = setColors(options)
 					pie.updateProp('data.content', options)
 					description.innerText = `Totaling at ${answerCount} answers`
 				}
