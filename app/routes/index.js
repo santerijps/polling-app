@@ -7,14 +7,14 @@ router.get('/', function(req, res, next) {
   pollController.getAll((e, r) => {
     if(e) throw e
     res.render('index', { 
-      title: 'POLLER',
-      description: 'Create public polls without registration',
+      title: 'PollingAPP',
+      description: 'Create polls and get the latest opinions',
       polls: r
     })
   })
 })
 
-// redirects to results page is poll already answered
+// redirects to results page if poll already answered
 const skipToPollResultsIfNeeded = (req, res) => {
   let ap = req.cookies['ap']
   if(ap !== undefined) {
@@ -69,8 +69,8 @@ router.get('/poll/:pollNumber/results', (req, res, next) => {
 // GET create poll page
 router.get('/create', (req, res, next) => {
   res.render('create', {
-    title: 'CREATE A POLL',
-    description: 'It\'s that easy'
+    title: 'Create a poll',
+    description: '...and get going'
   })
 })
 

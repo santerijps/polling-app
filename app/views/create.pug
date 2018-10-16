@@ -3,19 +3,19 @@ extends layout
 block content
   include title.pug
   div.container.text-center.main-margin-bottom
-    div.main-width(style='margin-bottom: 5%;')
+    div.main-width.main-margin-bottom(style='padding: 10px;')
       div.form-group.text-left
-        label 
+        //label 
           b Question
-        input(type='text' class='form-control' placeholder='Is the sky blue?' id='q')
+        input(type='text' class='form-control' placeholder='Question text' id='q')
       div.form-group.text-left
-        label
+        //label
           b Description 
-        input(type='text' class='form-control' placeholder='Now that the ashes have settled...' id='d')
+        input(type='text' class='form-control' placeholder='Description' id='d')
       div#options
-    a(href='javascript:;' onclick='addOption()')
+    a#addOption(href='javascript:;')
       b ADD OPTION&nbsp;
     span &nbsp;|&nbsp;
-    a(href='javascript:;' onclick='publishPoll()')
+    a#publish(href='javascript:;')
       b &nbsp;PUBLISH
   script(src='/javascripts/poll-create.js')

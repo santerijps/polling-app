@@ -11,5 +11,6 @@ html
     script(defer src='/javascripts/popper.min.js')
     script(defer src='/javascripts/bootstrap.min.js')
   body
-    block content
-    include footer.pug
+    div.bg-box(style='width: 90%; margin-left: 5%; height: 100%; padding: 10px;')
+      block content
+      include footer.pug

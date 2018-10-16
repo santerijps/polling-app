@@ -12,7 +12,7 @@ const addOption = () => {
   button.setAttribute('style', 'border: 1px solid #ced4da; font-weight: bold;')
   button.setAttribute('tabindex', '-1')
   button.innerText = 'X'
-  button.addEventListener('click', () => container.parentNode.removeChild(container))
+  button.onclick = () => container.parentNode.removeChild(container)
   // create input element
   let input = document.createElement('INPUT')
   input.setAttribute('type', 'text')
@@ -25,28 +25,83 @@ const addOption = () => {
   optionsElement.appendChild(container)
 }
 
-var pollPublished = false
-const publishPoll = () => {
-  if(pollPublished) return
-  pollPublished = true
-  let question = document.getElementById('q').value
-  let description = document.getElementById('d').value
+const getQuestion = () => {
+  return document.getElementById('q').value
+}
+
+const getDescription = () => {
+  return document.getElementById('d').value
+}
+
+const getOptions = () => {
   let optionsElement = document.getElementById('options')
   let options = []
   optionsElement.querySelectorAll('input').forEach(i => options.push(i.value))
+  return options
+}
+
+const noDuplicateOptions = () => {
+  let upperCase = getOptions().map(option => option.toUpperCase())
+  for(let i = 0; i < upperCase.length; i++) {
+    let option = upperCase[i]
+    delete upperCase[i]
+    if(upperCase.indexOf(option) !== -1) {
+      return false
+    }
+  }
+  return true
+}
+
+const atLeastTwoOptions = () => {
+  return getOptions().length >= 2
+}
+
+const noEmptyValues = () => {
+  if(getQuestion().length > 0)
+  if(getDescription().length > 0)
+  if(getOptions().map(o => o.length > 0).indexOf(false) === -1)
+    return true
+  return false
+}
+
+var pollPublishingNotStarted = true
+
+const prePublishCheck = () => {
+  if(noEmptyValues() && atLeastTwoOptions() && noDuplicateOptions()) {
+    if(pollPublishingNotStarted) {
+      pollPublishingNotStarted = false
+      publishPoll()
+    }
+  }
+}
+
+const handleSuccess = json => {
+  window.location.href = `/poll/${json.number}`
+}
+
+const handleFailure = e => {
+  alert(e)
+  window.location.href = '/'
+}
+
+const publishPoll = () => {
   fetch('/api/polls', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      question: question,
-      description: description,
+      question: getQuestion(),
+      description: getDescription(),
       selectLimit: 1,
-      options: options
+      options: getOptions()
     })
-  }).then(r => r.json()).then(json => {
-    window.location.href = `/poll/${json.number}`
-  }).catch(e => {
-    alert(e)
-    window.location.href = '/'
   })
+  .then(r => r.json())
+  .then(handleSuccess)
+  .catch(handleFailure)
 }
+
+document.getElementById('addOption').onclick = () => addOption()
+document.getElementById('publish').onclick = () => prePublishCheck()
+
+addOption()
+addOption()

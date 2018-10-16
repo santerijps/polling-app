@@ -102,7 +102,7 @@ function resultUpdater() {
 	setTimeout(() => {
 		fetchResults()
 		resultUpdater()
-	}, 10000);
+	}, 5000);
 }
 
 resultUpdater()

@@ -8,11 +8,28 @@
   src: url('../fonts/Roboto-Light.ttf');
 }
 
-body {
-  background-color: #f2f2f2 !important;
-  color: #958f8f !important;
+html {
   height: 100%;
   width: 100%;
+}
+
+body {
+  background-color: #DCD0C0 !important;
+  color: #373737 !important;
+  height: 100%;
+  width: 100%;
+}
+
+.bg-box {
+  background-color: #f4f4f4 !important;
+}
+
+.bg-bg {
+  background-color: #DCD0C0 !important;
+}
+
+.bg-font {
+  background-color: #333A56 !important;
 }
 
 .text-center {
@@ -23,6 +40,7 @@ body {
   text-align: left;
 }
 
+/* Wide Screens */
 @media screen and (min-width: 800px) {
   .main-width {
     width: 70% !important;
@@ -31,8 +49,12 @@ body {
   .main-margin-bottom {
     margin-bottom: 5%;
   }
+  h1 {
+    font-size: 2.5rem !important;
+  }
 }
 
+/* Narrow Screens */
 @media screen and (max-width: 400px) {
   .main-width {
     width: 90% !important;
@@ -40,5 +62,8 @@ body {
   }
   .main-margin-bottom {
     margin-bottom: 15%;
+  }
+  h1 {
+    font-size: 2rem !important;
   }
 }

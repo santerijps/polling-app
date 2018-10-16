@@ -4,13 +4,27 @@ div.container
       tr
         th Popular polls right now
     tbody
-      each q in polls.length ? polls.map(p => {p.number = `/poll/${p.number}`;return p;}) : [{number: '/', question: 'There are no polls...'}]
+      if polls.length === 0
         tr
           td(style='width: 80%;')
-            div(style='display: inline-block; width: 80%; overflow: auto;')
-              a(href=q.number)
-                b= q.question
-            div(style='display: inline-block; width: 20%; text-align: right;'
-              title=q.answerCount+' people have answered to this poll')
-              i.material-icons group
-              span(style='vertical-align: top;') &nbsp;#{q.answerCount}
+            b There are no polls :(
+      else
+        each q in polls.map(p => {p.number = `/poll/${p.number}`;return p;})
+
+          - var hint
+          if q.answerCount === 0
+            - hint = 'Nobody has answered this poll yet'
+          else if q.answerCount === 1
+            - hint = '1 person has answered this poll'
+          else
+            - hint = q.answerCount + ' people have answered to this poll'
+          
+          tr
+            td(style='width: 80%;') 
+              div(style='display: inline-block; width: 80%; overflow: auto;')
+                a(href=q.number)
+                  b= q.question
+              div(style='display: inline-block; width: 20%; text-align: right;'
+                title=hint)
+                i.material-icons group
+                span(style='vertical-align: top;') &nbsp;#{q.answerCount}
