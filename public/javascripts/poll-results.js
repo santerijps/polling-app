@@ -62,7 +62,7 @@ var pie = new d3pie("chart", {
   "tooltips": {
 		"enabled": true,
 		"type": "placeholder",
-		"string": "{label}: {value} answers, {percentage}%"
+		"string": "{value} answer(s)"
 	},
 	"misc": {
 		"gradient": {
