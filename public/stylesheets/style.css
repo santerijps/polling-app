@@ -44,6 +44,12 @@ body {
 
 /* Wide Screens */
 @media screen and (min-width: 800px) {
+  .main-container {
+    width: 90%; 
+    margin-left: 5%; 
+    height: 100%; 
+    min-height: 100%;
+  }
   .main-width {
     width: 70% !important;
     margin-left: 15%;
@@ -61,6 +67,12 @@ body {
 
 /* Narrow Screens */
 @media screen and (max-width: 400px) {
+  .main-container {
+    width: 95%; 
+    margin-left: 2.5%; 
+    height: 100%; 
+    min-height: 100%;
+  }
   .main-width {
     width: 100% !important;
     
