@@ -94,7 +94,7 @@ function fetchResults() {
 				}
 			}
 		})
-		.catch(e => console.log(e))
+		.catch(e => console.warn(`Failed to fetch new results, try refreshing the page instead\n${e}`))
 }
 
 // keeps fetching new results
