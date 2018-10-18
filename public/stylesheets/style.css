@@ -1,5 +1,5 @@
 @font-face {
-  font-family: Thin;
+  font-family: Thinn;
   src: url('../fonts/Roboto-Thin.ttf');
 }
 
@@ -17,6 +17,7 @@ html {
 body {
   background-color: #DCD0C0 !important;
   color: #373737 !important;
+  font-family: Light;
   min-height: 100%  !important;
   height: 100%;
   width: 100%;
