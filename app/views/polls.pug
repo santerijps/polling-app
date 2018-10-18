@@ -7,7 +7,7 @@ div.container.main-margin-bottom
       if polls.length === 0
         tr
           td(style='width: 80%;')
-            b There are no polls :(
+            span There are no polls :(
       else
         each q in polls.map(p => {p.number = `/poll/${p.number}`;return p;})
 
@@ -23,7 +23,7 @@ div.container.main-margin-bottom
             td(style='width: 80%;') 
               div(style='display: inline-block; width: 80%; overflow: auto;')
                 a(href=q.number)
-                  b= q.question
+                  span= q.question
               div(style='display: inline-block; width: 20%; text-align: right;'
                 title=hint)
                 i.material-icons group
