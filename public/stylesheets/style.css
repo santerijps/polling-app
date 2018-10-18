@@ -15,8 +15,8 @@ html {
 }
 
 body {
-  background-color: #DCD0C0 !important;
-  color: #373737 !important;
+  background: linear-gradient(141deg, #61B4E9 0%, #2cb5e8 51%, #1fc8db 75%);
+  /*background: linear-gradient(#61B4E9, #4f9fe6);*/
   font-family: Light;
   min-height: 100%  !important;
   height: 100%;
