@@ -15,34 +15,38 @@ router.get('/', function(req, res, next) {
 })
 
 // redirects to results page if poll already answered
+// returns true if redirected, else returns false
 const skipToPollResultsIfNeeded = (req, res) => {
   let ap = req.cookies['ap']
   if(ap !== undefined) {
     ap = JSON.parse(ap)
     if(ap.indexOf(req.params.pollNumber) !== -1) {
       res.redirect(`/poll/${req.params.pollNumber}/results`)
+      return true
     } 
   }
+  return false
 }
 
 // GET specified poll
 router.get('/poll/:pollNumber', (req, res, next) => {
-  skipToPollResultsIfNeeded(req, res)
-  pollController.getByPollNumber(req.params.pollNumber, (e, r) => {
-    if(e) throw e
-    r ? res.render('poll', {
-      title: r.question,
-      description: r.description,
-      options: r.options
-    }) : (
-      res.render('error', {
-        message: 'Poll not found!',
-        error: {
-          status: 404
-        }
-      })
-    )
-  })
+  if(!skipToPollResultsIfNeeded(req, res)) {
+    pollController.getByPollNumber(req.params.pollNumber, (e, r) => {
+      if(e) throw e
+      r ? res.render('poll', {
+        title: r.question,
+        description: r.description,
+        options: r.options
+      }) : (
+        res.render('error', {
+          message: 'Poll not found!',
+          error: {
+            status: 404
+          }
+        })
+      )
+    })
+  }
 })
 
 // GET specified poll results
