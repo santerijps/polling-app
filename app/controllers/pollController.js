@@ -1,16 +1,13 @@
 const mongoose  = require('mongoose')
 const Poll      = mongoose.model('Poll')
 
-// Returns a date with 'hours' amount of time added to it
-const hoursInTheFuture = hours =>
-  new Date(Date.now() + hours * (1000 * 60 * 60))
-
 // Reformats the options to the correct format
 const initializeOptions = options => 
   options.map(o => ({label: o, count: 0}))
 
 // A generator that initializes its starting value to be
-// the current date timestamp in milliseconds
+// the current date timestamp in milliseconds.
+// Yields number as a hex value
 const pollNumberGenerator = (function*() {
   let n = +new Date(); for(;;) yield (++n).toString(16)
 })()
@@ -65,7 +62,6 @@ module.exports = {
       question: question,
       description: description,
       selectLimit: selectLimit,
-      //expires: hoursInTheFuture(24),
       number: generatePollNumber(),
       answerCount: 0,
       options: initializeOptions(options)

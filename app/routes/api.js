@@ -9,6 +9,6 @@ router.route('/polls')
   .get(apiController.getAllPolls)
   .post(apiController.createPoll)
   .put(apiController.answerToPoll)  
-  .delete(apiController.deletePoll)
+  //.delete(apiController.deletePoll)
 
 module.exports = router

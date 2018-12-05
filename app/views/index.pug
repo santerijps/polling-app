@@ -1,5 +1,12 @@
 extends layout
 
 block content
-  div.container.text-center.main-margin-bottom
+  div.text-center(style="box-sizing: border-box; margin-bottom: 20px;")
+    p(style="background-color: lightgrey; display: inline; font-family: monospace; padding: 10px;")= host
   include polls.pug
+
+  //app-root
+  block scripts
+    script(src="/build/runtime.06daa30a2963fa413676.js")
+    script(src="/build/polyfills.f6ae3e8b63939c618130.js")
+    script(src="/build/main.0fa90b49f8f63e92db28.js")

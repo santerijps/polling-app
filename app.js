@@ -3,6 +3,8 @@ const express       = require('express')
 const path          = require('path')
 const cookieParser  = require('cookie-parser')
 const logger        = require('morgan')
+const express_enforces_ssl = require('express-enforces-ssl')
+const helmet 				= require('helmet')
 
 // Database connection
 require('./app/models/db')
@@ -12,7 +14,12 @@ const indexRouter = require('./app/routes/index')
 
 const app = express()
 
+app.enable('trust proxy') 
+//app.use(express_enforces_ssl())
+app.use(helmet())
+
 // view engine setup
+app.use(express.static(path.join(__dirname, 'app_public')))
 app.set('views', path.join(__dirname + '/app', 'views'))
 app.set('view engine', 'pug')
 

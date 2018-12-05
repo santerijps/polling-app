@@ -61,6 +61,6 @@ const handleSuccess = json => {
 
 // called when answering poll fails
 const handleFailure = e => {
-  alert(e)
+  alert("Error occurred!", e)
   window.location.href = '/'
 }

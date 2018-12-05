@@ -1,15 +1,36 @@
 const express         = require('express')
 const router          = express.Router()
 const pollController  = require('../controllers/pollController')
+const request         = require('request')
+
+const getHost = callback => {
+  request('http://ip-api.com/json', { json: true }, (err, res, body) => {
+    var host = ''
+    if(err) {
+      host = 'Host info currently not available'
+    } else if(body.status !== 'success') {
+      host = 'Host info currently not available'
+    } else {
+      if(body.city || body.country) host = 'Hosted in '
+      if(body.city) host += body.city
+      if(body.country) host += `, ${body.country}`
+      if(body.org) host += ` by ${body.org}`
+    }
+    callback && callback(host)
+  })
+}
 
 // GET home page
 router.get('/', function(req, res, next) {
-  pollController.getAll((e, r) => {
-    if(e) throw e
-    res.render('index', { 
-      title: 'PollingAPP',
-      description: 'Create polls and get the latest opinions',
-      polls: r
+  getHost(host => {
+    pollController.getAll((e, r) => {
+      if(e) throw e
+      res.render('index', { 
+        title: 'PollingApp',
+        description: 'Create polls and get the latest opinions',
+        polls: r,
+        host: host
+      })
     })
   })
 })
