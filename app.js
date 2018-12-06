@@ -16,7 +16,7 @@ const app = express()
 
 //app.enable('trust proxy') 
 //app.use(express_enforces_ssl())
-//app.use(helmet())
+app.use(helmet())
 
 // view engine setup
 app.use(express.static(path.join(__dirname, 'app_public')))
