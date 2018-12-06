@@ -20,9 +20,14 @@ const getHost = callback => {
   })
 }
 
+const getHostIfLocal = callback => {
+  if(process.env.MONGO_URL) callback("")
+  else getHost(callback)
+}
+
 // GET home page
 router.get('/', function(req, res, next) {
-  getHost(host => {
+  getHostIfLocal(host => {
     pollController.getAll((e, r) => {
       if(e) throw e
       res.render('index', { 

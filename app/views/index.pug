@@ -2,5 +2,6 @@ extends layout
 
 block content
   div.text-center(style="box-sizing: border-box; margin-bottom: 20px;")
-    p(style="background-color: lightgrey; display: inline; font-family: monospace; padding: 10px;")= host
+    if host
+      p(style="background-color: lightgrey; display: inline; font-family: monospace; padding: 10px;")= host
   include polls.pug
