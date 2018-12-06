@@ -23,6 +23,7 @@ var server
  * Only use HTTPS when the environment variable exists
  */
 if(process.env.HTTPS_CERT) {
+  console.log("SERVER RUNNING HTTPS")
   var privateKey = fs.readFileSync( './server.key' )
   var certificate = fs.readFileSync( './server.crt' )
 
@@ -32,6 +33,7 @@ if(process.env.HTTPS_CERT) {
   }, app);  
 
 } else {
+  console.log("SERVER RUNNING HTTP")
   server  = http.createServer(app)
 }
 
